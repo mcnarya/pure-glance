@@ -869,6 +869,9 @@ func (a *application) StaticAssetPath(asset string) string {
 }
 
 func (a *application) VersionedAssetPath(asset string) string {
+	if !strings.HasPrefix(asset, "/") {
+		asset = "/" + asset
+	}
 	return a.Config.Server.BaseURL + asset +
 		"?v=" + strconv.FormatInt(a.CreatedAt.Unix(), 10)
 }
