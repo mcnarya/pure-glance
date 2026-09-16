@@ -1,0 +1,69 @@
+- name: Pure Suite
+  width: wide
+  center-vertically: false
+  columns:
+    - size: small
+      widgets:
+        - type: clock
+          time-format: 12h
+          timezones:
+            - timezone: Local
+              label: Local Time
+
+        - type: monitor
+          title: Pure Suite
+          cache: 30s
+          sites:
+            - title: Pure Feed
+              url: /feed/
+              icon: si:twitch
+            - title: Pure OTP
+              url: /otp/
+              icon: si:auth0
+            - title: Pure Read
+              url: /read/
+              icon: si:readme
+            - title: Pure Note
+              url: /note/
+              icon: si:markdown
+
+        - type: bookmarks
+          groups:
+            - title: Pure Navigation
+              links:
+                - title: Pure Feed (Radio & Streams)
+                  url: /feed/
+                  same-tab: true
+                - title: Pure OTP (2FA Authenticator)
+                  url: /otp/
+                  same-tab: true
+                - title: Pure Read (Distraction-Free)
+                  url: /read/
+                  same-tab: true
+                - title: Pure Note (Scratchpad)
+                  url: /note/
+                  same-tab: true
+
+    - size: full
+      widgets:
+        - type: search
+          autofocus: true
+
+        - type: bookmarks
+          groups:
+            - title: Homelab & Services
+              links:
+                - title: Proxmox VE
+                  url: https://pve.lan
+                - title: Traefik
+                  url: https://traefik.lan
+                - title: Docker Swarm
+                  url: https://portainer.lan
+            - title: Code & Repositories
+              links:
+                - title: GitHub
+                  url: https://github.com/mcnarya
+                - title: Pure App
+                  url: https://github.com/mcnarya/pure-app
+                - title: Pure Glance
+                  url: https://github.com/mcnarya/pure-glance

@@ -1,4 +1,4 @@
-FROM golang:1.26-alpine AS builder
+FROM golang:alpine AS builder
 
 WORKDIR /app
 
@@ -23,8 +23,9 @@ FROM alpine:3.21
 RUN apk add --no-cache zfs
 
 WORKDIR /app
-COPY --from=builder /app/dynacat .
+COPY --from=builder /app/dynacat /app/pure-glance
+RUN ln -s /app/pure-glance /app/dynacat
 RUN mkdir -p /app/config
 
 EXPOSE 8080/tcp
-ENTRYPOINT ["/app/dynacat", "--config", "/app/config/dynacat.yml"]
+ENTRYPOINT ["/app/pure-glance", "--config", "/app/config/pure-glance.yml"]

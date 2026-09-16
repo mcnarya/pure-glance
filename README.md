@@ -1,19 +1,19 @@
 <p align="center"><img width="250px" src="docs/docs/logo.png"></p>
-<h1 align="center">Dynacat</h1>
+<h1 align="center">Pure Glance 👁️</h1>
 <p align="center">
-  <a href="https://dynacat.artur.zone/configuration">Configuration</a> •
-  <a href="https://discord.gg/mUqTzrfjFP">Discord</a> •
-  <a href="https://ko-fi.com/panonim">Sponsor</a> 
-</p>
-<p align="center">
-  <a href="https://github.com/Panonim/dynawidgets">Dynawidgets repo</a> •
-  <a href="https://dynacat.artur.zone/preconfigured-pages">Preconfigured pages</a> •
-  <a href="https://dynacat.artur.zone/themes">Themes</a> 
+  <b>The Command Center Dashboard for the Pure Suite ecosystem.</b><br>
+  <i>Custom fork of <a href="https://github.com/Panonim/dynacat">Dynacat</a> (and <a href="https://github.com/glanceapp/glance">Glance</a>) tailored for Pure Hub, Nord aesthetics, and zero-distraction homelab monitoring.</i>
 </p>
 
-<p align="center">Self-hosted dashboard built for people who want their information in one place.<br>Forked from Glance - it focuses on dynamic content updates and seamless integration with external applications.</p>
+---
 
-![](docs/docs/images/readme-main-image.png)
+## 🌟 Pure Suite Integration
+* 🎨 **Nord & Pure Aesthetic**: Native Nord and Material Design 3 tokens with default palette synchronization.
+* 🔄 **Pure Hub Vibe-Sync**: Listens for `PURE_HUB_THEME_CHANGE` messages from Pure Hub to update themes dynamically in real time without reloading.
+* 🚀 **Pure Suite Starter**: Built-in starter preset for Pure Feed (`/feed/`), Pure OTP (`/otp/`), Pure Read (`/read/`), and Pure Note (`/note/`).
+* ⚡ **Flexible Routing**: Native support for subpath routing under `/glance/` or root domains on Docker Swarm.
+
+---
 
 ## Features
 ### Various widgets

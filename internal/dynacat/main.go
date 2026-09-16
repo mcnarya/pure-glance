@@ -112,14 +112,15 @@ func resolveConfigPath(primaryPath string) string {
 		return primaryPath
 	}
 
-	if filepath.Base(primaryPath) != "dynacat.yml" {
-		return primaryPath
-	}
-
-	glancePath := filepath.Join(filepath.Dir(primaryPath), "glance.yml")
-	if stat, err := os.Stat(glancePath); err == nil && !stat.IsDir() && stat.Size() > 0 {
-		slog.Warn("Using legacy glance.yml config file. Please rename it to dynacat.yml to avoid deprecation issues")
-		return glancePath
+	dir := filepath.Dir(primaryPath)
+	for _, alt := range []string{"pure-glance.yml", "dynacat.yml", "glance.yml"} {
+		altPath := filepath.Join(dir, alt)
+		if stat, err := os.Stat(altPath); err == nil && !stat.IsDir() && stat.Size() > 0 {
+			if alt != filepath.Base(primaryPath) {
+				slog.Info("Using detected config file", "path", altPath)
+			}
+			return altPath
+		}
 	}
 
 	return primaryPath

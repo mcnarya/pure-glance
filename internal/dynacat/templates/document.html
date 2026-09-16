@@ -45,6 +45,43 @@
             pageData.theme = stored.key;
         } catch (e) {}
     })();
+
+    // Pure Hub Theme Synchronization
+    window.addEventListener("message", function(event) {
+        if (!event.data || event.data.type !== "PURE_HUB_THEME_CHANGE") return;
+        var theme = event.data.theme;
+        if (!theme) return;
+        document.documentElement.setAttribute("data-pure-theme", theme);
+        var presetMap = {
+            "theme-nord": "nord",
+            "theme-nord-light": "nord-light",
+            "theme-material-dark": "material-dark",
+            "theme-material-light": "default-light",
+            "theme-dracula": "default-dark",
+            "theme-midnight": "default-dark"
+        };
+        var targetPreset = presetMap[theme] || (theme.includes("light") ? "nord-light" : "nord");
+        if (targetPreset && targetPreset !== pageData.theme) {
+            fetch((pageData.baseURL || "") + "/api/set-theme/" + targetPreset, {
+                method: "POST",
+                credentials: "same-origin"
+            }).then(function(res) {
+                if (res.ok) {
+                    return res.text().then(function(css) {
+                        var styleElem = document.getElementById("theme-style");
+                        if (styleElem) styleElem.textContent = css;
+                        document.documentElement.setAttribute("data-theme", targetPreset);
+                        var scheme = res.headers.get("X-Scheme") || (targetPreset.includes("light") ? "light" : "dark");
+                        document.documentElement.setAttribute("data-scheme", scheme);
+                        pageData.theme = targetPreset;
+                        try {
+                            localStorage.setItem("dynacat-theme", JSON.stringify({ key: targetPreset, css: css, scheme: scheme }));
+                        } catch (e) {}
+                    });
+                }
+            }).catch(function() {});
+        }
+    });
     </script>
     {{ if .App.Config.Theme.CustomCSSFile }}<link rel="stylesheet" href="{{ .App.Config.Theme.CustomCSSFile }}?v={{ .App.CreatedAt.Unix }}">{{ end }}
     {{ block "document-head-after" . }}{{ end }}

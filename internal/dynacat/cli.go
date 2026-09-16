@@ -58,7 +58,7 @@ func parseCliOptions() (*cliOptions, error) {
 		fmt.Println("  diagnose              Run diagnostic checks")
 	}
 
-	configPath := flags.String("config", "dynacat.yml", "Set config path")
+	configPath := flags.String("config", "pure-glance.yml", "Set config path")
 	envFile := flags.String("env-file", "", "Path to an env file to load environment variables from")
 	err := flags.Parse(os.Args[1:])
 	if err != nil {

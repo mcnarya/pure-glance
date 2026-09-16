@@ -73,7 +73,7 @@ func (t *themeProperties) init() error {
 	if t.BackgroundColor != nil {
 		t.BackgroundColorAsHex = t.BackgroundColor.ToHex()
 	} else {
-		t.BackgroundColorAsHex = "#151519"
+		t.BackgroundColorAsHex = "#2e3440"
 	}
 
 	return nil

@@ -171,9 +171,49 @@ func newApplication(c *config) (*application, error) {
 		app.OIDCEnabled = true
 	}
 
+	if config.Theme.BackgroundColor == nil {
+		config.Theme.BackgroundColor = &hslColorField{220, 16, 22}
+		config.Theme.PrimaryColor = &hslColorField{193, 43, 67}
+		config.Theme.PositiveColor = &hslColorField{92, 28, 65}
+		config.Theme.NegativeColor = &hslColorField{354, 42, 56}
+		config.Theme.ContrastMultiplier = 1.1
+		config.Theme.TextSaturationMultiplier = 0.9
+	}
+
 	if !config.Theme.DisablePicker {
-		themeKeys := make([]string, 0, 2)
-		themeProps := make([]*themeProperties, 0, 2)
+		themeKeys := make([]string, 0, 5)
+		themeProps := make([]*themeProperties, 0, 5)
+
+		themeKeys = append(themeKeys, "nord")
+		themeProps = append(themeProps, &themeProperties{
+			BackgroundColor:          &hslColorField{220, 16, 22},
+			PrimaryColor:             &hslColorField{193, 43, 67},
+			PositiveColor:            &hslColorField{92, 28, 65},
+			NegativeColor:            &hslColorField{354, 42, 56},
+			ContrastMultiplier:       1.1,
+			TextSaturationMultiplier: 0.9,
+		})
+
+		themeKeys = append(themeKeys, "nord-light")
+		themeProps = append(themeProps, &themeProperties{
+			Light:                    true,
+			BackgroundColor:          &hslColorField{218, 27, 94},
+			PrimaryColor:             &hslColorField{213, 32, 52},
+			PositiveColor:            &hslColorField{92, 28, 65},
+			NegativeColor:            &hslColorField{354, 42, 56},
+			ContrastMultiplier:       1.2,
+			TextSaturationMultiplier: 0.8,
+		})
+
+		themeKeys = append(themeKeys, "material-dark")
+		themeProps = append(themeProps, &themeProperties{
+			BackgroundColor:          &hslColorField{210, 20, 8},
+			PrimaryColor:             &hslColorField{213, 100, 81},
+			PositiveColor:            &hslColorField{122, 39, 64},
+			NegativeColor:            &hslColorField{6, 100, 83},
+			ContrastMultiplier:       1.2,
+			TextSaturationMultiplier: 0.8,
+		})
 
 		defaultDarkTheme, ok := config.Theme.Presets.Get("default-dark")
 		if ok && !config.Theme.SameAs(defaultDarkTheme) || !config.Theme.SameAs(&themeProperties{}) {
@@ -405,7 +445,7 @@ func newApplication(c *config) (*application, error) {
 	)
 
 	if config.Branding.AppName == "" {
-		config.Branding.AppName = "Dynacat"
+		config.Branding.AppName = "Pure Glance"
 	}
 
 	if config.Branding.AppIconURL == "" {
@@ -1101,9 +1141,19 @@ func (a *application) server() (func() error, func() error) {
 		mux.Handle("/assets/{path...}", assetsHandler)
 	}
 
+	var rootHandler http.Handler = mux
+	if a.Config.Server.BaseURL != "" && a.Config.Server.BaseURL != "/" {
+		subMux := http.NewServeMux()
+		trimmedBase := strings.Trim(a.Config.Server.BaseURL, "/")
+		subMux.Handle("/"+trimmedBase+"/", http.StripPrefix("/"+trimmedBase, mux))
+		subMux.Handle("/"+trimmedBase, http.RedirectHandler("/"+trimmedBase+"/", http.StatusMovedPermanently))
+		subMux.Handle("/", mux)
+		rootHandler = subMux
+	}
+
 	server := http.Server{
 		Addr:    fmt.Sprintf("%s:%d", a.Config.Server.Host, a.Config.Server.Port),
-		Handler: a.securityHeadersMiddleware(sameOriginMiddleware(mux)),
+		Handler: a.securityHeadersMiddleware(sameOriginMiddleware(rootHandler)),
 	}
 
 	start := func() error {
