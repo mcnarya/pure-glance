@@ -181,8 +181,8 @@ func newApplication(c *config) (*application, error) {
 	}
 
 	if !config.Theme.DisablePicker {
-		themeKeys := make([]string, 0, 5)
-		themeProps := make([]*themeProperties, 0, 5)
+		themeKeys := make([]string, 0, 12)
+		themeProps := make([]*themeProperties, 0, 12)
 
 		themeKeys = append(themeKeys, "nord")
 		themeProps = append(themeProps, &themeProperties{
@@ -213,6 +213,77 @@ func newApplication(c *config) (*application, error) {
 			NegativeColor:            &hslColorField{6, 100, 83},
 			ContrastMultiplier:       1.2,
 			TextSaturationMultiplier: 0.8,
+		})
+
+		themeKeys = append(themeKeys, "material-light")
+		themeProps = append(themeProps, &themeProperties{
+			Light:                    true,
+			BackgroundColor:          &hslColorField{233, 100, 99},
+			PrimaryColor:             &hslColorField{204, 100, 32},
+			PositiveColor:            &hslColorField{123, 46, 33},
+			NegativeColor:            &hslColorField{0, 75, 42},
+			ContrastMultiplier:       1.2,
+			TextSaturationMultiplier: 0.8,
+		})
+
+		themeKeys = append(themeKeys, "dracula")
+		themeProps = append(themeProps, &themeProperties{
+			BackgroundColor:          &hslColorField{231, 15, 18},
+			PrimaryColor:             &hslColorField{326, 100, 74},
+			PositiveColor:            &hslColorField{135, 94, 65},
+			NegativeColor:            &hslColorField{0, 100, 67},
+			ContrastMultiplier:       1.2,
+			TextSaturationMultiplier: 0.9,
+		})
+
+		themeKeys = append(themeKeys, "sunset")
+		themeProps = append(themeProps, &themeProperties{
+			BackgroundColor:          &hslColorField{256, 31, 12},
+			PrimaryColor:             &hslColorField{25, 95, 53},
+			PositiveColor:            &hslColorField{161, 84, 39},
+			NegativeColor:            &hslColorField{0, 84, 60},
+			ContrastMultiplier:       1.2,
+			TextSaturationMultiplier: 0.9,
+		})
+
+		themeKeys = append(themeKeys, "cyberpunk")
+		themeProps = append(themeProps, &themeProperties{
+			BackgroundColor:          &hslColorField{240, 33, 3},
+			PrimaryColor:             &hslColorField{54, 100, 50},
+			PositiveColor:            &hslColorField{157, 100, 50},
+			NegativeColor:            &hslColorField{340, 100, 50},
+			ContrastMultiplier:       1.3,
+			TextSaturationMultiplier: 1.0,
+		})
+
+		themeKeys = append(themeKeys, "gruvbox")
+		themeProps = append(themeProps, &themeProperties{
+			BackgroundColor:          &hslColorField{30, 6, 12},
+			PrimaryColor:             &hslColorField{27, 98, 55},
+			PositiveColor:            &hslColorField{106, 36, 65},
+			NegativeColor:            &hslColorField{7, 96, 59},
+			ContrastMultiplier:       1.2,
+			TextSaturationMultiplier: 0.9,
+		})
+
+		themeKeys = append(themeKeys, "solarized")
+		themeProps = append(themeProps, &themeProperties{
+			BackgroundColor:          &hslColorField{193, 100, 8},
+			PrimaryColor:             &hslColorField{205, 69, 49},
+			PositiveColor:            &hslColorField{69, 100, 26},
+			NegativeColor:            &hslColorField{1, 71, 52},
+			ContrastMultiplier:       1.2,
+			TextSaturationMultiplier: 0.8,
+		})
+
+		themeKeys = append(themeKeys, "oled")
+		themeProps = append(themeProps, &themeProperties{
+			BackgroundColor:          &hslColorField{0, 0, 0},
+			PrimaryColor:             &hslColorField{217, 91, 60},
+			PositiveColor:            &hslColorField{142, 71, 45},
+			NegativeColor:            &hslColorField{0, 84, 60},
+			ContrastMultiplier:       1.3,
+			TextSaturationMultiplier: 0.9,
 		})
 
 		defaultDarkTheme, ok := config.Theme.Presets.Get("default-dark")

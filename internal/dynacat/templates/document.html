@@ -56,11 +56,16 @@
             "theme-nord": "nord",
             "theme-nord-light": "nord-light",
             "theme-material-dark": "material-dark",
-            "theme-material-light": "default-light",
-            "theme-dracula": "default-dark",
-            "theme-midnight": "default-dark"
+            "theme-material-light": "material-light",
+            "theme-dracula": "dracula",
+            "theme-sunset": "sunset",
+            "theme-cyberpunk": "cyberpunk",
+            "theme-gruvbox": "gruvbox",
+            "theme-solarized": "solarized",
+            "theme-oled": "oled",
+            "theme-midnight": "oled"
         };
-        var targetPreset = presetMap[theme] || (theme.includes("light") ? "nord-light" : "nord");
+        var targetPreset = presetMap[theme] || presetMap["theme-" + theme] || (theme.includes("light") ? "nord-light" : "nord");
         if (targetPreset && targetPreset !== pageData.theme) {
             fetch((pageData.baseURL || "") + "/api/set-theme/" + targetPreset, {
                 method: "POST",
