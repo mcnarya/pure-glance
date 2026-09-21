@@ -43,6 +43,12 @@ pages:
               - title: Pure Note
                 url: /note/
                 icon: si:markdown
+              - title: Pure Clone
+                url: /clone/
+                icon: si:rclone
+              - title: Pure Ping
+                url: /ping/
+                icon: si:pulse
 
           - type: bookmarks
             groups:
@@ -60,11 +66,22 @@ pages:
                   - title: Pure Note
                     url: /note/
                     same-tab: true
+                  - title: Pure Clone
+                    url: /clone/
+                    same-tab: true
+                  - title: Pure Ping
+                    url: /ping/
+                    same-tab: true
 
       - size: full
         widgets:
           - type: search
             autofocus: true
+
+          - type: docker-containers
+            title: Docker Stack
+            sock-path: /var/run/docker.sock
+            running-only: false
 
           - type: bookmarks
             groups:
