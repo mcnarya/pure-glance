@@ -181,8 +181,8 @@ func newApplication(c *config) (*application, error) {
 	}
 
 	if !config.Theme.DisablePicker {
-		themeKeys := make([]string, 0, 12)
-		themeProps := make([]*themeProperties, 0, 12)
+		themeKeys := make([]string, 0, 20)
+		themeProps := make([]*themeProperties, 0, 20)
 
 		themeKeys = append(themeKeys, "nord")
 		themeProps = append(themeProps, &themeProperties{
@@ -284,6 +284,57 @@ func newApplication(c *config) (*application, error) {
 			NegativeColor:            &hslColorField{0, 84, 60},
 			ContrastMultiplier:       1.3,
 			TextSaturationMultiplier: 0.9,
+		})
+
+		themeKeys = append(themeKeys, "tokyo-night")
+		themeProps = append(themeProps, &themeProperties{
+			BackgroundColor:          &hslColorField{235, 19, 13},
+			PrimaryColor:             &hslColorField{222, 89, 72},
+			PositiveColor:            &hslColorField{88, 56, 61},
+			NegativeColor:            &hslColorField{349, 89, 72},
+			ContrastMultiplier:       1.2,
+			TextSaturationMultiplier: 0.9,
+		})
+
+		themeKeys = append(themeKeys, "catppuccin")
+		themeProps = append(themeProps, &themeProperties{
+			BackgroundColor:          &hslColorField{240, 21, 15},
+			PrimaryColor:             &hslColorField{267, 84, 81},
+			PositiveColor:            &hslColorField{115, 54, 76},
+			NegativeColor:            &hslColorField{343, 81, 75},
+			ContrastMultiplier:       1.2,
+			TextSaturationMultiplier: 0.9,
+		})
+
+		themeKeys = append(themeKeys, "rose-pine")
+		themeProps = append(themeProps, &themeProperties{
+			BackgroundColor:          &hslColorField{249, 22, 12},
+			PrimaryColor:             &hslColorField{2, 55, 83},
+			PositiveColor:            &hslColorField{197, 49, 38},
+			NegativeColor:            &hslColorField{343, 76, 68},
+			ContrastMultiplier:       1.2,
+			TextSaturationMultiplier: 0.9,
+		})
+
+		themeKeys = append(themeKeys, "forest")
+		themeProps = append(themeProps, &themeProperties{
+			BackgroundColor:          &hslColorField{154, 39, 7},
+			PrimaryColor:             &hslColorField{160, 84, 39},
+			PositiveColor:            &hslColorField{158, 64, 52},
+			NegativeColor:            &hslColorField{350, 89, 60},
+			ContrastMultiplier:       1.2,
+			TextSaturationMultiplier: 0.9,
+		})
+
+		themeKeys = append(themeKeys, "solarized-light")
+		themeProps = append(themeProps, &themeProperties{
+			Light:                    true,
+			BackgroundColor:          &hslColorField{44, 87, 94},
+			PrimaryColor:             &hslColorField{205, 69, 49},
+			PositiveColor:            &hslColorField{68, 100, 30},
+			NegativeColor:            &hslColorField{1, 71, 52},
+			ContrastMultiplier:       1.2,
+			TextSaturationMultiplier: 0.8,
 		})
 
 		defaultDarkTheme, ok := config.Theme.Presets.Get("default-dark")
