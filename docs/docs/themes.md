@@ -201,3 +201,50 @@ theme:
   positive-color: 136 53 40
   negative-color: 5 81 56
 ```
+
+### Solarized Light
+```yaml
+theme:
+  light: true
+  background-color: 44 87 94
+  primary-color: 205 69 49
+  positive-color: 68 100 30
+  negative-color: 1 71 52
+  contrast-multiplier: 1.2
+  text-saturation-multiplier: 0.8
+```
+
+## Pure Suite Themes (Presets)
+
+### Tokyo Night
+```yaml
+theme:
+  background-color: 235 19 13
+  primary-color: 222 89 72
+  positive-color: 88 56 61
+  negative-color: 349 89 72
+  contrast-multiplier: 1.2
+  text-saturation-multiplier: 0.9
+```
+
+### Rosé Pine
+```yaml
+theme:
+  background-color: 249 22 12
+  primary-color: 2 55 83
+  positive-color: 197 49 38
+  negative-color: 343 76 68
+  contrast-multiplier: 1.2
+  text-saturation-multiplier: 0.9
+```
+
+### Forest Emerald
+```yaml
+theme:
+  background-color: 154 39 7
+  primary-color: 160 84 39
+  positive-color: 158 64 52
+  negative-color: 350 89 60
+  contrast-multiplier: 1.2
+  text-saturation-multiplier: 0.9
+```
