@@ -50,6 +50,21 @@ theme:
       negative-color: 1 71 52
       contrast-multiplier: 1.2
       text-saturation-multiplier: 0.8
+    eink-light:
+      light: true
+      background-color: 0 0 100
+      primary-color: 0 0 0
+      positive-color: 0 0 15
+      negative-color: 0 0 0
+      contrast-multiplier: 1.5
+      text-saturation-multiplier: 0
+    eink-dark:
+      background-color: 0 0 0
+      primary-color: 0 0 100
+      positive-color: 0 0 85
+      negative-color: 0 0 100
+      contrast-multiplier: 1.5
+      text-saturation-multiplier: 0
 
 pages:
   - name: Pure Suite

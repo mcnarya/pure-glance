@@ -337,6 +337,27 @@ func newApplication(c *config) (*application, error) {
 			TextSaturationMultiplier: 0.8,
 		})
 
+		themeKeys = append(themeKeys, "eink-light")
+		themeProps = append(themeProps, &themeProperties{
+			Light:                    true,
+			BackgroundColor:          &hslColorField{0, 0, 100},
+			PrimaryColor:             &hslColorField{0, 0, 0},
+			PositiveColor:            &hslColorField{0, 0, 15},
+			NegativeColor:            &hslColorField{0, 0, 0},
+			ContrastMultiplier:       1.5,
+			TextSaturationMultiplier: 0,
+		})
+
+		themeKeys = append(themeKeys, "eink-dark")
+		themeProps = append(themeProps, &themeProperties{
+			BackgroundColor:          &hslColorField{0, 0, 0},
+			PrimaryColor:             &hslColorField{0, 0, 100},
+			PositiveColor:            &hslColorField{0, 0, 85},
+			NegativeColor:            &hslColorField{0, 0, 100},
+			ContrastMultiplier:       1.5,
+			TextSaturationMultiplier: 0,
+		})
+
 		defaultDarkTheme, ok := config.Theme.Presets.Get("default-dark")
 		if ok && !config.Theme.SameAs(defaultDarkTheme) || !config.Theme.SameAs(&themeProperties{}) {
 			themeKeys = append(themeKeys, "default-dark")

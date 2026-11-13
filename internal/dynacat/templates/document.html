@@ -68,7 +68,9 @@
             "theme-catppuccin": "catppuccin",
             "theme-rose-pine": "rose-pine",
             "theme-forest": "forest",
-            "theme-solarized-light": "solarized-light"
+            "theme-solarized-light": "solarized-light",
+            "theme-eink-light": "eink-light",
+            "theme-eink-dark": "eink-dark"
         };
         var targetPreset = presetMap[theme] || presetMap["theme-" + theme] || (theme.includes("light") ? "nord-light" : "nord");
         if (targetPreset && targetPreset !== pageData.theme) {
