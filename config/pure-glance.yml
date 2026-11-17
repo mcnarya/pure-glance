@@ -136,6 +136,89 @@ pages:
             running-only: false
 
           - type: bookmarks
+            title: Applications
+            groups:
+              - links:
+                  - title: Server Status
+                    url: https://servers.mcnarya.com/
+                    icon: sh:strava-statistics-light
+                  - title: Internet Failover
+                    url: http://192.168.5.1/
+                    icon: sh:netgear-light
+                  - title: Pure
+                    url: https://pure.mcnarya.com/
+                    icon: sh:apple-music-light
+                  - title: Pure Read
+                    url: https://read.mcnarya.com/
+                    icon: mdi:book-open-page-variant
+                  - title: Speedtest
+                    url: https://speed.mcnarya.com/
+                    icon: sh:speedtest-light
+                  - title: Status
+                    url: https://status.mcnarya.com/
+                    icon: sh:gatus-light
+              - links:
+                  - title: Proxmox
+                    url: https://proxmox.mcnarya.com/
+                    icon: sh:proxmox-light
+                  - title: Network Switch
+                    url: http://192.168.86.119/
+                    icon: sh:tp-link-light
+                  - title: IT Tools
+                    url: https://tools.mcnarya.com/
+                    icon: sh:it-tools-light
+                  - title: Pure Clone
+                    url: https://clone.mcnarya.com/
+                    icon: si:rclone
+                  - title: Pure Note
+                    url: https://note.mcnarya.com/
+                    icon: si:markdown
+                  - title: Pure Ping
+                    url: https://ping.mcnarya.com/
+                    icon: si:pulse
+                  - title: Prepare For My Trip
+                    url: https://prepareformytrip.com
+                    icon: mdi:plane-car
+              - links:
+                  - title: Portainer
+                    url: https://portainer.mcnarya.com/
+                    icon: sh:portainer-light
+                  - title: Printer
+                    url: https://printer.mcnarya.com/
+                    icon: si:hp
+                  - title: Code
+                    url: https://code.mcnarya.com/
+                    icon: sh:visual-studio-code-light
+                  - title: ConvertX
+                    url: https://convert.mcnarya.com/
+                    icon: mdi:file-swap-outline
+                  - title: Dozzle
+                    url: https://dozzle.mcnarya.com/
+                    icon: sh:dozzle-light
+                  - title: Traffic Stats
+                    url: https://stats.mcnarya.com/
+                    icon: sh:goaccess-light
+              - links:
+                  - title: Backup
+                    url: https://backup.mcnarya.com/
+                    icon: sh:duplicati-light
+                  - title: AdGuard
+                    url: https://adguard.mcnarya.com/
+                    icon: sh:adguard-home-light
+                  - title: API Tester
+                    url: https://rest.mcnarya.com/
+                    icon: sh:send-visee-light
+                  - title: Squoosh
+                    url: https://squoosh.mcnarya.com/
+                    icon: mdi:image-size-select-small
+                  - title: RSS Bridge
+                    url: https://rssbridge.mcnarya.com/
+                    icon: si:rss
+                  - title: MarkItDown
+                    url: https://markitdown.mcnarya.com/
+                    icon: mdi:language-markdown
+
+          - type: bookmarks
             groups:
               - title: Homelab
                 links:
